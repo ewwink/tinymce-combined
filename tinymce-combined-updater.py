@@ -89,7 +89,7 @@ if Version(jsdelivr_version) > Version(github_version):
         readme = f.read()
         readme = readme.replace(github_version, jsdelivr_version)
 
-    with open("README.md", "r") as f:
+    with open("README.md", "w") as f:
         f.write(readme)
 
     print(f"TinyMCE Updated.")
