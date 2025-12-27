@@ -1,6 +1,8 @@
 name: Update TinyMCE Combined js
 
 on:
+  schedule:
+    - cron: '0 1 * * *' 
   push:
     branches: [ main ]
   workflow_dispatch:
@@ -32,8 +34,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add version.txt
+          git add README.md
           git add dist/
-          git commit -m "Update to TinyMCE ${{env.tinymce_new_version}}" || echo "No changes to commit"
+          git commit -m "Update TinyMCE to ${{env.tinymce_version}}" || echo "No changes to commit"
           git push
 
       - name: Upload artifact

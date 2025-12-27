@@ -21,7 +21,8 @@ or use specific version
 
 ## Version
 
-included JS and Plugin file in `tinymce-combined-standard`
+included JS and Plugin file in `tinymce-combined-standard`:
+
 - tinymce.min.js
 - themes/silver/theme.min.js
 - models/dom/model.min.js
