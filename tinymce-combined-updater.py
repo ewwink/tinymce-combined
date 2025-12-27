@@ -10,7 +10,6 @@ from packaging.version import Version
 def set_github_env_var(name, value):
     env_file = os.getenv("GITHUB_ENV")
     with open(env_file, "a") as f:
-        # Note: A newline character '\n' is important for correct formatting
         f.write(f"{name}={value}\n")
 
 
