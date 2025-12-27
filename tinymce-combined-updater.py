@@ -6,12 +6,10 @@ https://github.com/ewwink/tinymce-combined
 import os, requests, json
 from packaging.version import Version
 
-
 def set_github_env_var(name, value):
     env_file = os.getenv("GITHUB_ENV")
     with open(env_file, "a") as f:
         f.write(f"{name}={value}\n")
-
 
 standard_js_files = [
     "/tinymce.min.js",
