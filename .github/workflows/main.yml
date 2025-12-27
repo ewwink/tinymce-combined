@@ -1,0 +1,55 @@
+name: Update TinyMCE Combined js
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run TinyMCE Update
+        id: update_tinymce
+        run: |
+          pip install requests packaging
+          python tinymce-combined-updater.py
+
+      - name: Commit and Push to dist
+        if: ${{env.tinymce_new_version == 'true'}}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add version.txt
+          git add dist/
+          git commit -m "Update to TinyMCE ${{env.tinymce_new_version}}" || echo "No changes to commit"
+          git push
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        if: ${{env.tinymce_new_version == 'true'}}
+        with:
+          name: dist
+          path: dist/*
+
+      - name: Create Release
+        if: ${{env.tinymce_new_version == 'true'}}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.tinymce_version }}
+          name: Release ${{ env.tinymce_version }}
+          files: |
+            dist
+          draft: false
+          prerelease: false
