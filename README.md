@@ -15,8 +15,8 @@ The Actions check new version of TinyMCE every day (daily cronjob)
 
 or use specific version
 
-<link href="https://cdn.jsdelivr.net/gh/ewwink/tinymce-combined@8.3.0/dist/skins/ui/oxide/content.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/ewwink/tinymce-combined@8.3.0/dist/tinymce-combined.min.js"></script>
+<link href="https://cdn.jsdelivr.net/gh/ewwink/tinymce-combined@8.3.1/dist/skins/ui/oxide/content.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/ewwink/tinymce-combined@8.3.1/dist/tinymce-combined.min.js"></script>
 ```
 
 ## Version
